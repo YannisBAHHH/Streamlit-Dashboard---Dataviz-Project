@@ -1,4 +1,6 @@
 # app.py
+import os
+import requests
 import streamlit as st
 import pandas as pd
 from Sections import overview, deep_dives, trade, simulations
