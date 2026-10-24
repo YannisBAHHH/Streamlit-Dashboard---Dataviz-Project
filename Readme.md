@@ -1,4 +1,4 @@
-This dashborad explores the dataset of the Energy mix of France for electricity production. It is from the official government website (https://www.data.gouv.fr/datasets/donnees-eco2mix-nationales-consolidees-et-definitives)
+This dashborad explores the dataset of the Energy mix of France for electricity production. It is from the official government website (https://www.data.gouv.fr/api/1/datasets/r/72c72414-a2d8-4dc5-b699-ff70eb6b4c4c)
 
 On the left side bar, you can chose the date range, starting from January 2011 to January 2026.
 You can also chose if the time is divided by day, month or year, allowing to see different things on the same graph.
