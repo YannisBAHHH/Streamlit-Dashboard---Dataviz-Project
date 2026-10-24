@@ -12,10 +12,21 @@ st.set_page_config(
 st.title("⚡ Data Storytelling: Energy Transition in France")
 st.caption("Source: RTE éCO2mix Consolidated Data (data.gouv.fr)")
 
+DATA_URL = "https://www.data.gouv.fr/api/1/datasets/r/72c72414-a2d8-4dc5-b699-ff70eb6b4c4c"
+LOCAL_PATH = "data/eco2mix-national-cons-def.csv"
 
 @st.cache_data(show_spinner=True)
 def load_data():
-    df = pd.read_csv("data/eco2mix-national-cons-def.csv", sep=";")
+
+    if not os.path.exists(LOCAL_PATH):
+        os.makedirs("data", exist_ok=True)
+        with st.spinner("Downloading eco2mix dataset from data.gouv.fr..."):
+            response = requests.get(DATA_URL)
+            response.raise_for_status()  # Check for HTTP errors
+            with open(LOCAL_PATH, "wb") as f:
+                f.write(response.content)
+
+    df = pd.read_csv(LOCAL_PATH, sep=";")
     
     df = df.drop(columns=['Date', 'Heure'], errors='ignore')
 
